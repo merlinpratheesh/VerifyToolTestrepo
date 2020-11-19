@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "VerifyToolTest"
+  "defaultProject": "VerifyToolTest",
+  "cli": {
+    "analytics": "feacc866-f8af-4fe0-96d8-14dfc4ce87be"
+  }
 }

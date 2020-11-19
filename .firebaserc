@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "verifytesttool": {
+      "hosting": {
+        "VerifyToolTest": [
+          "verifytesttool"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "verifytesttool"
+  }
+}

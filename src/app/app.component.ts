@@ -17,15 +17,23 @@ export class AppComponent implements OnDestroy {
   myarraydisplay: [] = [];
   mysubDocRead: Subscription | undefined;
   myitemsdisplay: Observable<any> | undefined;
+  myitemsdisplayCollection: Observable<any> | undefined;
+
   constructor(public afAuth: AngularFireAuth, public tutorialService: UserdataService) {
 
     this.subAuth = this.afAuth.authState.subscribe(res => {
       if (res && res.uid) {
         this.loggedin = true;
-        this.myitemsdisplay =this.tutorialService.getProjectCollection();
+        this.myitemsdisplayCollection =this.tutorialService.getProjectCollection();
+        console.log(this.myitemsdisplayCollection);
+        this.myitemsdisplayCollection.subscribe(some=>{
+          console.log(some);
+        })
+
       } else {
         this.loggedin = false;
       }
+
     });
 
   }

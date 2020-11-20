@@ -11,8 +11,8 @@
   </button>
 </mat-toolbar>
 
-<div *ngIf="myitemsdisplay | async as userone">
+<div *ngIf="myitemsdisplayCollection | async as userone">
   <div *ngFor="let item of userone ">
-    <pre>{{ item.project }}</pre>
+    <pre>{{ item.Project }}</pre>
   </div>
-</div>
+</div>  

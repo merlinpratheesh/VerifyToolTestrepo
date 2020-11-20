@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { collectionData, doc } from 'rxfire/firestore';
+import { map  } from 'rxjs/operators';
+
 
 
 
@@ -17,9 +19,16 @@ export class UserdataService {
   logout() {
     return this.auth.signOut();
   }
-  getDocumentData(projectname:string, mainfield: string, subfield: string): any {
+  /*getDocumentData(projectname:string, mainfield: string, subfield: string): any {
     const collectionPath= projectname + '/' + mainfield + '/TestItems/'+ subfield;  
     const myDocRef = this.db.firestore.doc(collectionPath);            
     return doc(myDocRef);
+  }*/
+    getDocumentData(projectname:string, mainfield: string, subfield: string): any {
+    const collectionPath= projectname + '/' + mainfield + '/TestItems/'+ subfield;  
+    const davidDocRef = this.db.firestore.doc(collectionPath);            
+    return doc(davidDocRef).pipe(
+      map(changes => ({ ...changes.data() })
+      ));
   }
 }

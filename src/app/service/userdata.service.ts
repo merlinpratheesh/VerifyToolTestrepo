@@ -10,15 +10,15 @@ import { collectionData, doc } from 'rxfire/firestore';
   providedIn: 'root'
 })
 export class UserdataService {
-  constructor(public auth: AngularFireAuth, private db: AngularFirestore){}
+  constructor(public auth: AngularFireAuth, private db: AngularFirestore) { }
   login() {
-    return this.auth.signInWithPopup( new (firebase.auth as any).GoogleAuthProvider());
+    return this.auth.signInWithPopup(new (firebase.auth as any).GoogleAuthProvider());
   }
   logout() {
     return this.auth.signOut();
   }
-  getProjectCollection(){
+  getProjectCollection() {
     return this.db.collection<any>('KeysListCollection').valueChanges({ idField: 'customID' });
   }
-  }
 }
+

@@ -10,6 +10,13 @@
         [icon]="['fas', 'sign-out-alt']"></fa-icon>
   </button>
 </mat-toolbar>
-<div *ngFor="let item of myarraydisplay.item">
-  <pre>{{ item | json }}</pre>
-</div>
+
+
+
+<div *ngIf="afAuth.authState | async as user">
+            <div *ngIf="myitemsdisplay | async as userone">
+              <div *ngFor="let item of userone.item ">
+                <pre>{{ item.description }}</pre>
+              </div>
+            </div>         
+ </div>

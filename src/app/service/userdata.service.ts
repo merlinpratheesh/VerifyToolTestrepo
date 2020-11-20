@@ -17,9 +17,8 @@ export class UserdataService {
   logout() {
     return this.auth.signOut();
   }
-  getDocumentData(projectname:string, mainfield: string, subfield: string): any {
+  getDocumentSnapShots(projectname:string, mainfield: string, subfield: string){
     const collectionPath= projectname + '/' + mainfield + '/TestItems/'+ subfield;  
-    const myDocRef = this.db.firestore.doc(collectionPath);            
-    return doc(myDocRef);
+    return this.db.doc<any>(collectionPath).valueChanges();   
   }
 }

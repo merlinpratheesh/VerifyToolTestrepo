@@ -22,7 +22,7 @@ export class AppComponent implements OnDestroy {
     this.subAuth = this.afAuth.authState.subscribe(res => {
       if (res && res.uid) {
         this.loggedin = true;
-        this.myitemsdisplay = this.tutorialService.getDocumentSnapShots('TestAngular','TestMain', 'TestSub').pipe(take(1));
+        this.myitemsdisplay =this.tutorialService.getProjectCollection();
       } else {
         this.loggedin = false;
       }

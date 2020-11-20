@@ -17,8 +17,8 @@ export class UserdataService {
   logout() {
     return this.auth.signOut();
   }
-  getDocumentSnapShots(projectname:string, mainfield: string, subfield: string){
-    const collectionPath= projectname + '/' + mainfield + '/TestItems/'+ subfield;  
-    return this.db.doc<any>(collectionPath).valueChanges();   
+  getProjectCollection(){
+    return this.db.collection<any>('KeysListCollection').valueChanges({ idField: 'customID' });
+  }
   }
 }

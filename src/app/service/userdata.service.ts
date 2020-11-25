@@ -8,6 +8,10 @@ export interface TestDocument{
   TestField: string; 
   TestFieldNext: string; 
 }
+export interface TestArrayNew{
+ ArrayList: string[]; 
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +27,10 @@ export class UserdataService {
   getDocumentPath(collectionName:string, documentId: string){
     const collectionPath= collectionName + '/' + documentId ;   
     return this.db.doc<TestDocument>(collectionPath).valueChanges();   
+  }
+  getDocumentPathNew(collectionName:string, documentId: string){
+    const collectionPath= collectionName + '/' + documentId ;   
+    return this.db.doc<TestArrayNew>(collectionPath).valueChanges();   
   }
 
 

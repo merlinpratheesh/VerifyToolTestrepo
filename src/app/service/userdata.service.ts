@@ -17,8 +17,9 @@ export class UserdataService {
   logout() {
     return this.auth.signOut();
   }
-  getDocumentSnapShots(projectname:string, mainfield: string, subfield: string){
-    const collectionPath= projectname + '/' + mainfield + '/TestItems/'+ subfield;  
+  getDocumentSnapShots(collectionName:string, documentId: string){
+    const collectionPath= collectionName + '/' + documentId ; 
+     
     return this.db.doc<any>(collectionPath).valueChanges();   
   }
 

@@ -18,7 +18,9 @@
   <div *ngIf="userone.maparray as mytemp ">
     <pre>{{ mytemp | json }}</pre>
   </div>
-  <div *ngIf="userone.Item as mytemp1 ">
-    <pre>{{ mytemp1 }}</pre>
+  <div *ngIf="userone as mytemp1 ">
+    <pre>{{ mytemp1.TestField }}</pre>
+    <pre>{{ mytemp1.TestFieldNext }}</pre>
+    {{mytemp1 | json}}
   </div>
 </div>    

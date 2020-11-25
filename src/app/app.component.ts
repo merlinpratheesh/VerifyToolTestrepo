@@ -25,11 +25,11 @@ export class AppComponent implements OnDestroy {
     this.subAuth = this.afAuth.authState.subscribe(res => {
       if (res && res.uid) {
         this.loggedin = true;
-        this.myitemsdisplay = this.tutorialService.getDocumentSnapShots('TestAngular','TestMain', 'TestSub').pipe(take(1));
-        this.mysubDocRead= this.myitemsdisplay.subscribe(some=>{
-          if(some !==null){
-            for(const misson in some){
-              console.log('reachedhere' ,misson,some[misson].details);//keys & values              
+        this.myitemsdisplay = this.tutorialService.getDocumentSnapShots('TestCollection','TestId').pipe(take(1));
+        this.mysubDocRead= this.myitemsdisplay.subscribe(testdataSubscribed=>{
+          if(testdataSubscribed !==null){
+            for(const fieldkey in testdataSubscribed){
+              console.log(fieldkey,testdataSubscribed[fieldkey]);//keys & values              
             }
           }
         });

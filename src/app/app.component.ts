@@ -1,70 +1,23 @@
-import { Component } from '@angular/core';
-import { UserdataService,TestDocument, TestArrayNew} from './service/userdata.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { Observable, Subscription } from 'rxjs';
-import { OnDestroy } from '@angular/core';
-import { take } from 'rxjs/operators';
-
+import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: [ './app.component.css' ]
 })
-export class AppComponent implements OnDestroy {
-  loggedin = false;
-  Componentvar :TestDocument | undefined;
-  Componentvar1:string[] | undefined;
-  subAuth: Subscription;
-  myarraydisplay: [] = [];
-  mysubDocRead: Subscription | undefined;
-  myitemsdisplay: Observable<any> | undefined;
-  myitemsdisplayArray: Observable<TestArrayNew> | undefined;
+export class AppComponent implements AfterViewInit  {
+  name = 'Angular';
+  myColor = 'hotpink';
 
-  constructor(public afAuth: AngularFireAuth, public tutorialService: UserdataService) {
+  ngAfterViewInit(){
 
-    this.subAuth = this.afAuth.authState.subscribe(res => {
-      if (res && res.uid) {
-        this.loggedin = true;
-        this.myitemsdisplay = this.tutorialService.getDocumentPath('TestCollection','TestId').pipe(take(1));
-
-        this.mysubDocRead= this.myitemsdisplay.subscribe(testdataSubscribed=>{
-          this.Componentvar=testdataSubscribed;
-
-          if(testdataSubscribed !==null){
-            for(const fieldkey in testdataSubscribed){
-              console.log(fieldkey,testdataSubscribed[fieldkey]);//keys & values              
-            }
-            console.log(this.Componentvar?.TestField)
-          }
-        });
-
-        this.myitemsdisplayArray = this.tutorialService.getDocumentPathNew('TestCollectionArray','TestArray').pipe(take(1));
-        this.mysubDocRead= this.myitemsdisplayArray.subscribe(testdataSubscribedNew=>{
-          
-          this.Componentvar1=testdataSubscribedNew.ArrayList;
-          if(testdataSubscribedNew !==null){
-            for (let i = 0; i < this.Componentvar1.length; i++) {
-              console.log(this.Componentvar1[i]);
-            }
-            this.Componentvar1.forEach((value) => {
-              console.log(value);
-            });
-          }
-        });
-
-      } else {
-        this.loggedin = false;
-      }
-    });
-
+    setInterval(()=>{
+       const possibleColors = [
+    'darksalmon', 'hotpink', 'lightskyblue', 'goldenrod', 'peachpuff',
+    'mediumspringgreen', 'cornflowerblue', 'blanchedalmond', 'lightslategrey'
+  ];
+  const colorPick = Math.floor(Math.random() * possibleColors.length);
+    this.myColor = possibleColors[colorPick];
+    }, 1000);
   }
-
-  ngOnDestroy()
-{
-  this.subAuth.unsubscribe();
 }
-}
-
-
-

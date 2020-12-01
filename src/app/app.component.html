@@ -1,26 +1,5 @@
-<mat-toolbar color="primary">
-  VerifyToolTest
-  
-  <span fxFlex="grow"></span>
-  <div *ngIf="afAuth.authState | async as user"> Welcome {{user.displayName}}!</div>
-  <button mat-icon-button>    
-    <fa-icon *ngIf="loggedin === false || loggedin === undefined " (click)="tutorialService.login()"
-        class="fas faSignInAlt fa-lg" [icon]="['fas', 'sign-in-alt']"></fa-icon> <!--signup-->
-    <fa-icon *ngIf="loggedin === true" (click)="tutorialService.logout()" class="fas faSignOutAlt fa-lg"
-        [icon]="['fas', 'sign-out-alt']"></fa-icon>
-  </button>
-</mat-toolbar>
+<h1 [ngStyle]="{'color': myColor}">Happy Birthday Evalin... 🎂 🎉</h1>
+<iframe src="https://scratch.mit.edu/projects/159104385/embed" allowtransparency="true" width="485" height="402"
+	frameborder="0" scrolling="no" allowfullscreen></iframe>
 
-<div *ngIf="myitemsdisplay | async as userone">
-<div *ngIf="userone as mytemp1 ">
-    <pre>{{ mytemp1.TestField }}</pre>
-    <pre>{{ mytemp1.TestFieldNext }}</pre>
-    {{mytemp1 | json}}
-  </div>
-</div> 
-   
-<div *ngIf="myitemsdisplayNew | async as useroneNew">
-<div *ngFor="let arrayval of useroneNew.TestArray ">
-  <pre>{{ arrayval }}</pre>
-</div>
-</div> 
+  by Pratheesh
